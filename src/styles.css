@@ -1,0 +1,13 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~primeicons/primeicons.css';
+/* @import '~primeng/resources/themes/bootstrap/theme.css'; */
+@import '~primeng/resources/primeng.min.css';
+
+button:focus {
+    outline: 0;
+}
+
+g:focus {
+    outline: none;
+}
