@@ -10,6 +10,8 @@ import { ArticleService } from '../service/article.service';
 })
 export class FilterComponent implements OnInit {
 
+  new_sub_options: String[] = [];
+  new_category: String[] = [];
   sub_options: Subject[]; // subject options
   rc_options: Group[]; // region and country options
 
@@ -34,7 +36,16 @@ export class FilterComponent implements OnInit {
 
 
   constructor(private articleService: ArticleService) {
+    this.articleService.getarea().subscribe(data => {
+      this.new_sub_options.push("All subject areas");
+      for (let i = 1; i < data.length; i++)
+      {
+        this.new_sub_options.push(data[i]);
+      }
+      console.log("search data = "  + this.new_sub_options);
+    });
     this.sub_options = SUB_OPTIONS;
+    console.log(SUB_OPTIONS);
     this.rc_options = RC_OPTIONS;
     
   }
@@ -51,6 +62,14 @@ export class FilterComponent implements OnInit {
   }
 
   updateCategory(): void {
+    this.articleService.getCategories(this.selected_sub_area).subscribe(data => {
+      this.new_category.push("All subject categories");
+      for (let i = 1; i < data.length; i++)
+      {
+        this.new_category.push(data[i]);
+      }
+      console.log("search data = "  + this.new_category);
+    });
     this.category_options = this.sub_options.find(option => option.area === this.selected_sub_area).category;
     this.selected_sub_category = this.category_options[0];
   }

@@ -372,7 +372,7 @@ export const SUB_OPTIONS: Subject[] = [
         ]
     },
     {
-        area: 'Nursing',
+        area: 'nursing',
         category: [
             'All subject categories',
             'Advanced and Specialized Nursing',
